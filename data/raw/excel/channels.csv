@@ -1,0 +1,7 @@
+﻿channel_key,channel_name,channel_group,share,base_conversion,base_quality
+1,Inbound - Site,Digital,0.2,0.18,0.7
+2,Outbound - SDR,Prospecção ativa,0.18,0.24,0.56
+3,Indicação,Parcerias,0.13,0.34,0.82
+4,Evento,Marketing,0.1,0.28,0.65
+5,Mídia paga,Digital,0.25,0.16,0.48
+6,Marketplace/API,Integração,0.14,0.21,0.58
