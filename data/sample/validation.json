@@ -1,0 +1,21 @@
+{
+  "date_future": 0,
+  "duplicate_lead_business_key": 0,
+  "orphan_interaction_leads": 0,
+  "orphan_opportunity_leads": 0,
+  "orphan_revenue_opportunities": 0,
+  "funnel_leads": 30000,
+  "funnel_mql": 11335,
+  "funnel_sql": 5700,
+  "opportunities": 2351,
+  "won_opportunities": 1138,
+  "revenue_total_brl": 88363334.87,
+  "anomaly_rate_leads": 0.01,
+  "anomaly_rate_interactions": 0.012,
+  "anomaly_rate_opportunities": 0.0077,
+  "anomaly_rate_revenue": 0.0053,
+  "funnel_mql_not_above_leads": true,
+  "funnel_sql_not_above_mql": true,
+  "clean_revenue_reconciles_to_won": true,
+  "revenue_outlier_amount_brl": 4027171.26
+}
