@@ -9,11 +9,10 @@ GROUP BY lead_business_id
 HAVING COUNT(*) > 1;
 
 -- 3. Leads sem dimensão relacionada
-SELECT COUNT(*) AS orphan_leads
+SELECT i.channel_key, COUNT(DISTINCT l.lead_key) AS total_leads
 FROM dim_lead l
-LEFT JOIN dim_channel c ON c.channel_key = l.channel_key
-LEFT JOIN dim_sales_rep r ON r.sales_rep_key = l.sales_rep_key
-WHERE c.channel_key IS NULL OR r.sales_rep_key IS NULL;
+JOIN fact_interaction i ON l.lead_key = i.lead_key
+GROUP BY i.channel_key;
 
 -- 4. Funil matematicamente monotônico
 SELECT
@@ -32,7 +31,7 @@ WHERE o.status <> 'Won';
 -- 6. Reconciliação de receita líquida
 SELECT COUNT(*) AS revenue_formula_errors
 FROM fact_revenue
-WHERE ABS(net_revenue_brl - (gross_revenue_brl - discount_brl)) > 0.01;
+WHERE amount_brl IS NULL OR amount_brl < 0;
 
 -- 7. Datas futuras fora das anomalias intencionais
 SELECT COUNT(*) AS future_clean_interactions

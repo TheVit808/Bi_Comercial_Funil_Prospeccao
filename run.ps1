@@ -13,6 +13,14 @@ switch ($Task) {
         python -m pytest -q
     }
     "reconcile" {
+        Write-Host "Executando a pipeline de ETL antes da reconciliacao..." -ForegroundColor Cyan
+        python src/etl/pipeline.py
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "Falha na execucao da pipeline ETL. Reconciliacao abortada."
+            exit $LASTEXITCODE
+        }
+
+        Write-Host "Executando reconciliacao SQL..." -ForegroundColor Cyan
         Get-Content sql/02_reconciliation.sql -Encoding UTF8 | sqlite3 data/bi_comercial.db
     }
     Default {
