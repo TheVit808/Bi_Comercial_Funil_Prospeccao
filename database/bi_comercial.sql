@@ -19,14 +19,13 @@ CREATE TABLE IF NOT EXISTS etl_load_log (
     error_message TEXT
 );
 
-CREATE TABLE IF NOT EXISTS etl_reject_log (
-    reject_key INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE IF NOT EXISTS etl_rejection_log (
+    rejection_id INTEGER PRIMARY KEY AUTOINCREMENT,
     load_log_key INTEGER NOT NULL,
     source_system TEXT NOT NULL,
-    source_file TEXT,
-    source_business_key TEXT,
-    target_table TEXT NOT NULL,
-    rejection_reason TEXT NOT NULL,
+    table_name TEXT NOT NULL,
+    business_key TEXT,
+    reason TEXT NOT NULL,
     raw_payload TEXT,
     rejected_at TEXT NOT NULL,
     FOREIGN KEY (load_log_key) REFERENCES etl_load_log(load_log_key)
