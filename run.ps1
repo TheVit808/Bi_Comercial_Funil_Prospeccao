@@ -4,13 +4,15 @@ param (
 
 switch ($Task) {
     "setup" {
+        python -m venv .venv
+        .\.venv\Scripts\Activate.ps1
         python -m pip install -r requirements.txt
     }
     "run" {
         python src/etl/pipeline.py
     }
     "test" {
-        python -m pytest -q
+        python -m pytest tests/ -v
     }
     "reconcile" {
         Write-Host "Executando a pipeline de ETL antes da reconciliacao..." -ForegroundColor Cyan
